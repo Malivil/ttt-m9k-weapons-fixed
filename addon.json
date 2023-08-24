@@ -1,0 +1,21 @@
+{
+  "title": "[TTT] M9K Weapons (Fixed)",
+  "type": "ServerContent",
+  "ignore": [
+    ".git*",
+    ".vscode*",
+    "*.md",
+    "*.iml",
+    ".idea*",
+    ".luacheckrc",
+    "*.psd",
+    "*.rockspec",
+    "*.svn*",
+    "*.vcproj",
+    "LICENSE",
+    "scripts*",
+    "templates*",
+    "images*",
+    "docs*"
+  ]
+}
