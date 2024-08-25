@@ -11,4 +11,4 @@ This is mostly just renaming and moving some files to get TTT to recognize them 
 
 # Links
 * Source code: https://github.com/Malivil/ttt-m9k-weapons-fixed
-* Workshop: https://steamcommunity.com/sharedfiles/filedetails/?edit=true&id=3025019026
+* Workshop: https://steamcommunity.com/sharedfiles/filedetails/?id=3025019026
