@@ -263,15 +263,17 @@ function SWEP:ShootBullet(damage, recoil, num_bullets, aimcone)
 	end
 	
 	local bullet = {}
-		bullet.Num 		= num_bullets
-		bullet.Src 		= self.Owner:GetShootPos()			-- Source
-		bullet.Dir 		= self.Owner:GetAimVector()			-- Dir of bullet
-		bullet.Spread 	= Vector(aimcone, aimcone, 0)			-- Aim Cone
-		bullet.Tracer	= 3							-- Show a tracer on every x bullets
-		bullet.TracerName = TracerName
-		bullet.Force	= damage * 0.5					-- Amount of force to give to phys objects
-		bullet.Damage	= damage
-		bullet.Callback	= function(attacker, tracedata, dmginfo) 
+		bullet.Attacker		= self.Owner
+		bullet.Inflictor	= self
+		bullet.Num			= num_bullets
+		bullet.Src			= self.Owner:GetShootPos()			-- Source
+		bullet.Dir			= self.Owner:GetAimVector()			-- Dir of bullet
+		bullet.Spread		= Vector(aimcone, aimcone, 0)			-- Aim Cone
+		bullet.Tracer		= 3							-- Show a tracer on every x bullets
+		bullet.TracerName	= TracerName
+		bullet.Force		= damage * 0.5					-- Amount of force to give to phys objects
+		bullet.Damage		= damage
+		bullet.Callback		= function(attacker, tracedata, dmginfo) 
 		
 						return self:RicochetCallback(0, attacker, tracedata, dmginfo) 
 					  end
@@ -383,14 +385,16 @@ function SWEP:RicochetCallback(bouncenum, attacker, tr, dmginfo)
  	local DotProduct = tr.HitNormal:Dot(tr.Normal * -1) 
 	
 	local ricochetbullet = {}
-		ricochetbullet.Num 		= 1
-		ricochetbullet.Src 		= tr.HitPos + (tr.HitNormal * 5)
-		ricochetbullet.Dir 		= ((2 * tr.HitNormal * DotProduct) + tr.Normal) + (VectorRand() * 0.05)
-		ricochetbullet.Spread 	= Vector(0, 0, 0)
-		ricochetbullet.Tracer	= 1
+		ricochetbullet.Attacker		= self.Owner
+		ricochetbullet.Inflictor	= self
+		ricochetbullet.Num 			= 1
+		ricochetbullet.Src 			= tr.HitPos + (tr.HitNormal * 5)
+		ricochetbullet.Dir 			= ((2 * tr.HitNormal * DotProduct) + tr.Normal) + (VectorRand() * 0.05)
+		ricochetbullet.Spread 		= Vector(0, 0, 0)
+		ricochetbullet.Tracer		= 1
 		ricochetbullet.TracerName 	= "m9k_effect_mad_ricochet_trace"
 		ricochetbullet.Force		= dmginfo:GetDamage() * 0.25
-		ricochetbullet.Damage	= dmginfo:GetDamage() * 0.5
+		ricochetbullet.Damage		= dmginfo:GetDamage() * 0.5
 		ricochetbullet.Callback  	= function(a, b, c) 
 			if (self.Ricochet) then  
 			local impactnum
@@ -506,15 +510,17 @@ function SWEP:BulletPenetrate(bouncenum, attacker, tr, paininfo)
 		
 	// -- Fire bullet from the exit point using the original trajectory
 	local penetratedbullet = {}
-		penetratedbullet.Num 		= 1
-		penetratedbullet.Src 		= trace.HitPos
-		penetratedbullet.Dir 		= tr.Normal	
-		penetratedbullet.Spread 	= Vector(0, 0, 0)
-		penetratedbullet.Tracer	= 1
+		penetratedbullet.Attacker		= self.Owner
+		penetratedbullet.Inflictor		= self
+		penetratedbullet.Num 			= 1
+		penetratedbullet.Src 			= trace.HitPos
+		penetratedbullet.Dir 			= tr.Normal	
+		penetratedbullet.Spread 		= Vector(0, 0, 0)
+		penetratedbullet.Tracer			= 1
 		penetratedbullet.TracerName 	= "m9k_effect_mad_penetration_trace"
-		penetratedbullet.Force		= 5
-		penetratedbullet.Damage	= paininfo:GetDamage() * fDamageMulti
-		penetratedbullet.Callback  	= function(a, b, c) if (self.Ricochet) then 	
+		penetratedbullet.Force			= 5
+		penetratedbullet.Damage			= paininfo:GetDamage() * fDamageMulti
+		penetratedbullet.Callback  		= function(a, b, c) if (self.Ricochet) then 	
 		local impactnum
 		if tr.MatType == MAT_GLASS then impactnum = 0 else impactnum = 1 end
 		return self:RicochetCallback(bouncenum + impactnum, a,b,c) end end	
