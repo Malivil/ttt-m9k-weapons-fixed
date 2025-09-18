@@ -3,7 +3,7 @@ This addon aims to reproduce the purpose of the [TTT M9K Weapons](https://steamc
 * Fixes many of the weapons not working in newer versions of GMod/TTT
 * Fixes weapons showing as errors if a dependant pack is not installed
   * Instead, these weapons are simply prevented from registering
-* Fixed compatibility with the [Support C_hands for M9K](https://steamcommunity.com/sharedfiles/filedetails/?id=3451239016) addon by [Риджи](https://steamcommunity.com/id/435325228)
+* Fixes compatibility with the [Support C_hands for M9K](https://steamcommunity.com/sharedfiles/filedetails/?id=3451239016) addon by [Риджи](https://steamcommunity.com/id/435325228)
 
 This is mostly just renaming and moving some files to get TTT to recognize them properly.
 
