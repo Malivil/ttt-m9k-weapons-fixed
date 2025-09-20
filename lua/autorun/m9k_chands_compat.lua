@@ -1,7 +1,7 @@
 -- Adapted from https://steamcommunity.com/sharedfiles/filedetails/?id=3451239016
 
 -- Only run this if the mod that adds these updated models actually exists
-if not file.Exists("models/weapons/chands_1887winchester.mdl", "GAME") then
+if not file.Exists("lua/autorun/m9k_chands_support.lua", "GAME") then
     print("[TTT-M9K] Ignoring c_hands fixes because the c_hands fix mod is not installed")
     return
 end
